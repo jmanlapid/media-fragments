@@ -9,3 +9,7 @@ angular.module('video-splicer', [])
 .run(function() {
   console.log('i am running');
 })
+
+.controller('AppCtrl', function() {
+  
+})

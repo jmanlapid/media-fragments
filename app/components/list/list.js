@@ -2,15 +2,35 @@
 
 angular.module('video-splicer')
 
+.filter('secondsToDateTime', function() {
+    return function(seconds) {
+        var d = new Date(0,0,0,0,0,0,0);
+        d.setSeconds(seconds);
+        return d;
+    };
+})
+
 .directive('list', function() {
   var template = [
-    '<h1>List</h1>',
+    '<h2>List</h2>',
+
+    '<div>',
+      '<h4>Original</h4>',
+      '<button ng-click="play(item, true)">Play</button>',
+    '</div><hr>',
+    
     '<div ng-repeat="item in list">',
-      '<span>{{item.name}}<span><br>',
-      '<span>{{item.start}} - {{item.end}}</span><br>',
-      '<button>Play</button>',
-      '<button>Edit</button>',
-      '<button>Delete</button><br><br>',
+      '<div ng-if="item.editing">',
+        '<edit item="item"></edit>',
+      '</div>',
+
+      '<div ng-if="!item.editing">',
+        '<h4>{{item.name}}</h4>',
+        '<h5>{{item.start | secondsToDateTime | date:"mm:ss"}} - {{item.end | secondsToDateTime| date:"mm:ss"}}</h5>',
+        '<button ng-click="play(item, false, $index)">Play</button>',
+        '<button ng-click="item.editing = true">Edit</button>',
+        '<button ng-click="delete($index)">Delete</button><br><br>',
+      '</div>',
     '</div>'
   ].join('');
 
@@ -24,19 +44,17 @@ angular.module('video-splicer')
   }
 })
 
-.controller('ListCtrl', function($scope, AddSrv) {
+.controller('ListCtrl', function($scope, AddSrv, PlaySrv, ListSrv) {
   angular.extend($scope, {
-    list: []
+    list: ListSrv.items,
+    play: function(splice, playOriginal, playIndex) {
+      console.log('settings ListSrv.playIndex to', playIndex);
+      ListSrv.playIndex = playIndex;
+      PlaySrv.broadcast(splice, playOriginal);
+    },
+    delete: function(index) {
+      ListSrv.delete(index);
+    }
   });
 
-  // add the example video to the list
-  (function(videoUrl) {
-    console.log(encodeURI(videoUrl));
-  })('16 Stunning Tries From The June Internationals!.mp4')
-
-  var addToList = function(event, params) {
-    $scope.list.push(params.newSplice);
-  };
-
-  AddSrv.listen(addToList);
 })

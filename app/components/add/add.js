@@ -4,7 +4,7 @@ angular.module('video-splicer')
 
 .directive('add', function() {
   var template = [
-    '<h1>Add</h1>',
+    '<h2>Add</h2>',
     '<input type="text" ng-model="data.name" placeholder="Enter name"/ ><br>',
     '<input type="number" ng-model="data.start" min="0" placeholder="Enter begin time"/ ><br>',
     '<input type="number" ng-model="data.end" min="0" placeholder="Enter end time"/ ><br>',
@@ -21,16 +21,16 @@ angular.module('video-splicer')
   }
 })
 
-.controller('AddCtrl', function(AddSrv, $scope) {
+.controller('AddCtrl', function(AddSrv, ListSrv, $scope) {
   angular.extend($scope, {
     data: {}
   });
 
   $scope.addNewSplice = function(newSplice) {
-    if (newSplice && newSplice.name != undefined && newSplice.name.length && 
-      newSplice.start != undefined && newSplice.end != undefined ) {
+    if (!newSplice) {
+      return;
     }
-    AddSrv.broadcast(newSplice);
+    ListSrv.add(newSplice);
     $scope.data = {};
   };
 
