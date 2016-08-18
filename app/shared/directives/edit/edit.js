@@ -2,7 +2,7 @@
 
 angular.module('app')
 
-.directive('edit', function($timeout) {
+.directive('edit', function($timeout, ListSrv) {
   var template = [
     '<h3>Editing {{original.name}}</h3>',
     '<input type="text" ng-model="data.name" placeholder="{{original.name}}"/ ><br>',
@@ -25,12 +25,7 @@ angular.module('app')
         original: scope.item,
         save: function(data) {
           $timeout(function() {
-            angular.extend(scope.item, {
-              editing: false,
-              name: data.name,
-              start: data.start,
-              end: data.end
-            });
+            ListSrv.saveEdits(scope.item, data);
           });
         },
         disabled: function(newSplice) {

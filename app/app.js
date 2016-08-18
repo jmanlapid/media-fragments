@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('app', ['ngRoute'])
+angular.module('app', ['ngRoute', 'LocalStorageModule'])
 
-.config(function($routeProvider) {
+.config(function($routeProvider, localStorageServiceProvider) {
+  localStorageServiceProvider.setPrefix('app');
+
   $routeProvider
     .when("/page1", {
         templateUrl : "/page1.html",
