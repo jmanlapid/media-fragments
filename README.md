@@ -20,7 +20,7 @@ Open index.html in a browser after installing dependencies. The sample rugby vid
  * Keep track of the play index in the ListSrv. When the video pauses, check if the stopped time is greater than the current media fragment end value.
 * ✓ The ability to ‘save’ clips for persistent use.
  * Using angular-local-storage bower package. Save data whenever a fragment is added, deleted, or edited. Load data when the service is loaded. 
-* The ability to add arbitrary ‘tags’ to clips so that they can be filtered by the tag name.
+* ✓ The ability to add arbitrary ‘tags’ to clips so that they can be filtered by the tag name.
  * Each media fragment object has an tags object of which tags are properties. Their values default to true. The challenge was making the ListController update its scope from another controller using $scope.$watch. I needed to make the service list a private var instead of public. 
 * ✓ Hotkeys to jump between the current clip and next and previous clips (if there are any)
  *  Document level key listeners in the player controller and utilizing the play index in the ListSrv. 
