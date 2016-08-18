@@ -34,13 +34,19 @@ angular.module('app')
     items.forEach(function(item, index) {
       var match = true
       tags.forEach(function(tag) {
-        if (!item.tags[tag]) {
+        try {
+          if (!item.tags[tag]) {
+            match = false;
+            return;
+          }
+        } catch (e) {
           match = false;
           return;
         }
       });
       if (match) filteredList.push(item);
     });
+    console.log(JSON.stringify(filteredList));
     items = filteredList;
   };
 

@@ -27,7 +27,7 @@ angular.module('app')
       '<div ng-if="!item.editing">',
         '<h4>{{item.name}}</h4>',
         '<h5>{{item.start | secondsToDateTime | date:"mm:ss"}} - {{item.end | secondsToDateTime| date:"mm:ss"}}</h5>',
-        '<span class="h5" ng-if="!isEmptyObj(item.tags)">Tags: </span><span ng-repeat="(key,val) in item.tags">{{key}}{{$last ? "": ", "}}</span><br><br>',
+        '<div ng-if="!isEmptyObj(item.tags)"><span class="h5">Tags: </span><span ng-repeat="(key,val) in item.tags">{{key}}{{$last ? "": ", "}}</span><br><br></div>',
         '<button ng-click="play(item, false, $index)">Play</button>',
         '<button ng-click="item.editing = true">Edit</button>',
         '<button ng-click="delete($index)">Delete</button><br><br>',
@@ -57,6 +57,7 @@ angular.module('app')
       ListSrv.delete(index);
     },
     isEmptyObj: function(obj) {
+      if (!obj) return true;
       return Object.keys(obj).length === 0 && obj.constructor === Object
     }
   });
