@@ -27,6 +27,7 @@ angular.module('app')
       '<div ng-if="!item.editing">',
         '<h4>{{item.name}}</h4>',
         '<h5>{{item.start | secondsToDateTime | date:"mm:ss"}} - {{item.end | secondsToDateTime| date:"mm:ss"}}</h5>',
+        '<span class="h5" ng-if="!isEmptyObj(item.tags)">Tags: </span><span ng-repeat="(key,val) in item.tags">{{key}}{{$last ? "": ", "}}</span><br><br>',
         '<button ng-click="play(item, false, $index)">Play</button>',
         '<button ng-click="item.editing = true">Edit</button>',
         '<button ng-click="delete($index)">Delete</button><br><br>',
@@ -44,9 +45,9 @@ angular.module('app')
   }
 })
 
-.controller('ListCtrl', function($scope, AddSrv, PlaySrv, ListSrv) {
+.controller('ListCtrl', function($scope, PlaySrv, ListSrv) {
   angular.extend($scope, {
-    list: ListSrv.items,
+    list: ListSrv.getItems(),
     play: function(splice, playOriginal, playIndex) {
       console.log('settings ListSrv.playIndex to', playIndex);
       ListSrv.playIndex = playIndex;
@@ -54,7 +55,15 @@ angular.module('app')
     },
     delete: function(index) {
       ListSrv.delete(index);
+    },
+    isEmptyObj: function(obj) {
+      return Object.keys(obj).length === 0 && obj.constructor === Object
     }
   });
+
+  $scope.$watch(function() { return ListSrv.getItems(); }, function(newList) {
+    console.log('$scope.watch w/ newList', JSON.stringify(newList));
+    $scope.list = newList;
+  }, true);
 
 })

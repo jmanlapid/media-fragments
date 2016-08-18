@@ -14,8 +14,8 @@
     <script type="text/javascript" src="app/shared/directives/add/add.js"></script>
     <script type="text/javascript" src="app/shared/directives/list/list.js"></script>
     <script type="text/javascript" src="app/shared/directives/edit/edit.js"></script>
+    <script type="text/javascript" src="app/shared/directives/filter/filter.js"></script>
     <script type="text/javascript" src="app/shared/providers/play-service.js"></script>
-    <script type="text/javascript" src="app/shared/providers/add-service.js"></script>
     <script type="text/javascript" src="app/shared/providers/list-service.js"></script>
   </head>
   <body ng-app="app">
@@ -30,10 +30,13 @@
         <div class="row">
           <div class="col-md-2">
             <add></add>
-            <list></list>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-7">
             <player></player>
+            <filter></filter>
+          </div>
+          <div class="col-md-3">
+            <list></list>
           </div>
         </div>
       </div>    

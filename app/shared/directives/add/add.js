@@ -5,9 +5,22 @@ angular.module('app')
 .directive('add', function() {
   var template = [
     '<h2>Add</h2>',
-    '<input type="text" ng-model="data.name" placeholder="Enter name"/ ><br>',
-    '<input type="number" ng-model="data.start" min="0" placeholder="Enter begin time"/ ><br>',
-    '<input type="number" ng-model="data.end" min="0" placeholder="Enter end time"/ ><br>',
+    '<div class="form-group">',
+      '<label>Name</label>',
+      '<input class="form-control" type="text" ng-model="data.name" placeholder="Enter name"/ >',
+    '</div>',
+    '<div class="form-group">',
+      '<label>Start time</label>',
+      '<input class="form-control" type="number" ng-model="data.start" min="0" placeholder="Enter begin time"/ >',
+    '</div>',
+    '<div class="form-group">',
+      '<label>End time</label>',
+      '<input class="form-control" type="number" ng-model="data.end" min="0" placeholder="Enter end time"/ >',
+    '</div>',
+    '<div class="form-group">',
+      '<label>Comma separated tags (optional)</label>',
+      '<input class="form-control" type="text" ng-model="data.tags" min="0" placeholder="(opt) Comma separated tags"/ ><br>',
+    '</div>',
     '<button ng-click="addNewSplice(data)" ng-disabled="disabled(data)">Add</button>'
   ].join('');
 
@@ -21,7 +34,7 @@ angular.module('app')
   }
 })
 
-.controller('AddCtrl', function(AddSrv, ListSrv, $scope) {
+.controller('AddCtrl', function(ListSrv, $scope) {
   angular.extend($scope, {
     data: {}
   });

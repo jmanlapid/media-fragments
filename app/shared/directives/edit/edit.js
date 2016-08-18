@@ -8,6 +8,7 @@ angular.module('app')
     '<input type="text" ng-model="data.name" placeholder="{{original.name}}"/ ><br>',
     '<input type="number" ng-model="data.start" min="0" placeholder="{{original.start}}"/ ><br>',
     '<input type="number" ng-model="data.end" min="0" placeholder="{{original.end}}"/ ><br>',
+    '<input type="text" ng-model="data.tags" min="0" placeholder="{{original.tags}}"/ ><br>',
     '<button ng-click="save(data)" ng-disabled="disabled(data)">save</button>',
     '<button ng-click="item.editing = false ">Cancel</button>'
   ].join('');
@@ -19,7 +20,6 @@ angular.module('app')
       item: '=item'
     },
     link: function(scope, element, attributes) {
-      
       angular.extend(scope, {
         data: scope.item,
         original: scope.item,
@@ -32,8 +32,10 @@ angular.module('app')
           return newSplice.name === undefined ||
             newSplice.start === undefined ||
             newSplice.end === undefined;
-        }
+        },
       }); 
+
+      scope.data.tags = ListSrv.tagPropertiesToArray(scope.data.tags);
     }
   }
 })
