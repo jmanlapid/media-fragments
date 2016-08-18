@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('video-splicer')
+angular.module('app')
 
 .filter('secondsToDateTime', function() {
     return function(seconds) {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('video-splicer')
+angular.module('app')
 
 .directive('edit', function($timeout) {
   var template = [

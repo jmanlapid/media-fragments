@@ -1,4 +1,4 @@
-angular.module('video-splicer')
+angular.module('app')
 
 .service('PlaySrv', function($rootScope) {
   this.broadcast = function(splice, playOriginal) {

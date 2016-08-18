@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('video-splicer')
+angular.module('app')
 
 .directive('player', function() {
   var template = [
@@ -20,8 +20,6 @@ angular.module('video-splicer')
     }
   }
 })
-
-//http://jsfiddle.net/dsbonev/cCCZ2/embedded/result,js,html,css/
 
 .controller('PlayerCtrl', function($scope, $timeout, PlaySrv, ListSrv) {
   var video = document.getElementById('video');

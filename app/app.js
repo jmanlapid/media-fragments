@@ -1,9 +1,18 @@
 'use strict';
 
-angular.module('video-splicer', [])
+angular.module('app', ['ngRoute'])
 
-.config(function() {
-
+.config(function($routeProvider) {
+  $routeProvider
+    .when("/page1", {
+        templateUrl : "/page1.html",
+        controller: 'Page1Ctrl'
+    })
+    .when("/page2", {
+        templateUrl : "/page2.html",
+        controller: "Page2Ctrl"
+    })
+    .otherwise('/page1');
 })
 
 .run(function() {

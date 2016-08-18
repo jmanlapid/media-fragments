@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('video-splicer')
+angular.module('app')
 
 .service('AddSrv', function($rootScope) {
   this.broadcast = function(newSplice) {

@@ -1,4 +1,4 @@
-angular.module('video-splicer')
+angular.module('app')
 
 .factory('ListSrv', function($q) {
   var svc = {};
