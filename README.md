@@ -6,6 +6,14 @@
 
 Open index.html in a browser after installing dependencies. The sample rugby video is already included.
 
+### Whats left to do but don't have time for better app
+* Wrap all the inputs in forms so you can press enter 
+* More commenting to show whats going on in my code
+* Use webserver to serve template urls (component templates are empty but thats where they should be instead of index.html)
+* Use protractor to build out angular unit tests
+* Better design (not my strong point)
+* Overlay the spinner over the video instead of hiding the video
+
 ### Optional Features Developed
 
 * ✓ The ability to automatically jump to the next clip after it finishes, with a 3 second waiting period and appropriate loading animation.
