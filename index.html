@@ -6,6 +6,7 @@
     <script type="text/javascript" src="app/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="app/assets/libs/angular/angular.js"></script>
     <script type="text/javascript" src="app/assets/libs/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="app/assets/libs/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="app/app.js"></script>
     <script type="text/javascript" src="app/components/page1/page1.js"></script>
     <script type="text/javascript" src="app/components/page2/page2.js"></script>
@@ -18,29 +19,17 @@
     <script type="text/javascript" src="app/shared/providers/list-service.js"></script>
   </head>
   <body ng-app="app">
-    <div class="ng-view"></div>
+    <div ui-view></div>
 
-    <script type="text/ng-template" id="/page1.html">
-      <div class="container">
-        <div class="row">
-          <h1>Video Splicer - Page ONE Template</h1>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <add></add>
-            <list></list>
-          </div>
-          <div class="col-md-8">
-            <player></player>
-          </div>
-        </div>
-      </div>    
-    </script>
+<!--     <script type="text/ng-template" id="/page1.html">
+    
+    </script> -->
 
-    <script type="text/ng-template" id="/page2.html">
+<!--     <script type="text/ng-template" id="/page2.html">
       <div class="container">
         <div class="row">
           <h1>Video Splicer - Page TWO Template</h1>
+          <button>Page ONE</button>
         </div>
         <div class="row">
           <div class="col-md-2">
@@ -52,7 +41,7 @@
           </div>
         </div>
       </div>    
-    </script>
+    </script> -->
 
 
   </body>
